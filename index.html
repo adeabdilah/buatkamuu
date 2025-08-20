@@ -2,6 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>fitriyayahya</title>
   <style>
     body {
@@ -56,7 +57,6 @@
       align-items: center;
       animation: fadeIn 1s;
     }
-
     @keyframes fadeIn {
       from {opacity: 0;}
       to {opacity: 1;}
@@ -64,17 +64,17 @@
 
     /* ------------ Page 1: Password ------------ */
     #page1 input {
-      padding: 10px;
+      padding: 12px;
       border: 2px solid pink;
       border-radius: 10px;
       margin-top: 10px;
       outline: none;
-      font-size: 16px;
+      font-size: 18px;
       text-align: center;
     }
     #page1 button {
       margin-top: 15px;
-      padding: 10px 20px;
+      padding: 12px 25px;
       border: none;
       border-radius: 20px;
       background: #ff4e80;
@@ -83,6 +83,7 @@
       cursor: pointer;
       transition: 0.3s;
       box-shadow: 0 0 10px rgba(255, 77, 166, 0.4);
+      font-size: 18px;
     }
     #page1 button:hover {
       background: #ff2e63;
@@ -104,32 +105,30 @@
       margin-bottom: 20px;
       font-weight: bold;
       color: #d63384;
-      min-height: 50px;
+      min-height: 60px;
       text-align: center;
       max-width: 90%;
       background: white;
-      padding: 10px 15px;
+      padding: 12px 18px;
       border-radius: 12px;
       box-shadow: 0 3px 8px rgba(0,0,0,0.1);
     }
     #tapBtn {
-      padding: 18px 35px;
-      font-size: 18px;
+      padding: 20px 40px;
+      font-size: 20px;
       background: #ff85a2;
       border: none;
       border-radius: 30px;
       color: white;
       font-weight: bold;
       cursor: pointer;
-      margin-top: 10px;
+      margin-top: 12px;
       animation: pulse 1.5s infinite;
-      position: relative;
-      overflow: hidden;
     }
     @keyframes pulse {
-      0% { transform: scale(1);}
-      50% { transform: scale(1.1);}
-      100% { transform: scale(1);}
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
     }
     #tapBtn:active {
       animation: btnTap 0.4s;
@@ -152,7 +151,6 @@
       100% { transform: translateY(-120px); opacity: 0;}
     }
 
-    /* confetti hati */
     .confetti {
       position: absolute;
       font-size: 18px;
@@ -167,11 +165,11 @@
 
     /* ------------ Page 3: Album Foto ------------ */
     h2 {
-      font-size: 20px;
+      font-size: 22px;
       color: #ff4e80;
       margin-bottom: 20px;
       background: white;
-      padding: 8px 15px;
+      padding: 10px 18px;
       border-radius: 12px;
     }
 
@@ -190,67 +188,72 @@
 
     .album-track {
       display: flex;
-      animation: scrollLeft 65s linear infinite; /* lebih cepat */
+      animation: scrollLeft 55s linear infinite;
     }
-
     @keyframes scrollLeft {
       from { transform: translateX(0); }
       to { transform: translateX(-50%); }
     }
 
     .album-track img {
-      width: 180px;
-      height: 250px;
+      width: 320px;   /* dibesarkan lagi */
+      height: 440px;  /* dibesarkan lagi */
       object-fit: cover;
       border-radius: 15px;
-      margin: 0 10px;
+      margin: 0 12px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
       flex-shrink: 0;
       animation: zoom 6s ease-in-out infinite alternate;
     }
-
     @keyframes zoom {
       from { transform: scale(1); }
       to { transform: scale(1.05); }
     }
 
     /* ------------ Responsif ------------ */
-    @media (min-width: 768px) {
-      #tapBtn { font-size: 20px; padding: 20px 40px; }
-      .album-track img { width: 220px; height: 320px; margin: 0 15px; }
-      h2 { font-size: 26px; }
-      #message { font-size: 24px; }
+    @media (max-width: 600px) {
+      #message { font-size: 18px; padding: 10px; }
+      #tapBtn { font-size: 18px; padding: 16px 32px; }
+      #page1 input { font-size: 16px; padding: 10px; }
+      #page1 button { font-size: 16px; padding: 10px 22px; }
+      h2 { font-size: 20px; }
+      .album-track img { width: 240px; height: 320px; margin: 0 8px; } /* responsif di HP */
     }
   </style>
 </head>
 <body>
 
-  <!-- Banyak Love Background -->
+  <!-- Love Background -->
   <div class="heartbeat">
-    <svg viewBox="0 0 512 512" style="top:10%; left:15%; width:100px; height:100px;"><path d="M256 464l-16-16C118 326 48 262 48 176 48 106 106 48 176 48c39 0 76 18 100 46 24-28 61-46 100-46 70 0 128 58 128 128 0 86-70 150-192 272l-16 16z"/></svg>
-    <svg viewBox="0 0 512 512" style="top:30%; left:60%; width:120px; height:120px;"><path d="M256 464l-16-16C118 326 48 262 48 176 48 106 106 48 176 48c39 0 76 18 100 46 24-28 61-46 100-46 70 0 128 58 128 128 0 86-70 150-192 272l-16 16z"/></svg>
-    <svg viewBox="0 0 512 512" style="top:70%; left:40%; width:150px; height:150px;"><path d="M256 464l-16-16C118 326 48 262 48 176 48 106 106 48 176 48c39 0 76 18 100 46 24-28 61-46 100-46 70 0 128 58 128 128 0 86-70 150-192 272l-16 16z"/></svg>
+    <svg viewBox="0 0 512 512" style="top:10%; left:15%; width:100px; height:100px;">
+      <path d="M256 464l-16-16C118 326 48 262 48 176 48 106 106 48 176 48c39 0 76 18 100 46 24-28 61-46 100-46 70 0 128 58 128 128 0 86-70 150-192 272l-16 16z"/>
+    </svg>
+    <svg viewBox="0 0 512 512" style="top:30%; left:60%; width:120px; height:120px;">
+      <path d="M256 464l-16-16C118 326 48 262 48 176 48 106 106 48 176 48c39 0 76 18 100 46 24-28 61-46 100-46 70 0 128 58 128 128 0 86-70 150-192 272l-16 16z"/>
+    </svg>
+    <svg viewBox="0 0 512 512" style="top:70%; left:40%; width:150px; height:150px;">
+      <path d="M256 464l-16-16C118 326 48 262 48 176 48 106 106 48 176 48c39 0 76 18 100 46 24-28 61-46 100-46 70 0 128 58 128 128 0 86-70 150-192 272l-16 16z"/>
+    </svg>
   </div>
 
-  <!-- Halaman 1: Password -->
+  <!-- Page 1: Password -->
   <div id="page1" class="page active">
     <h2>ketik nama lengkap kamu</h2>
     <input type="password" id="password" placeholder="Masukkan nama kamu">
     <button onclick="checkPassword()">Masuk</button>
   </div>
 
-  <!-- Halaman 2: Tap Tap -->
+  <!-- Page 2: Tap Tap -->
   <div id="page2" class="page">
     <div id="message">Tap tombol di bawah yaa</div>
     <button id="tapBtn" onclick="tapLove(event)">Tap</button>
   </div>
 
-  <!-- Halaman 3: Album Foto -->
+  <!-- Page 3: Album Foto -->
   <div id="page3" class="page">
-    <h2>orang paling cantikkkk</h2>
+    <h2>💖</h2>
     <div class="album-wrapper">
       <div class="album-track">
-        <!-- ganti link fotonya pake catbox punyamu -->
         <img src="https://files.catbox.moe/ydatu9.jpg" alt="">
         <img src="https://files.catbox.moe/jgqe75.jpg" alt="">
         <img src="https://files.catbox.moe/xt5lc3.jpg" alt="">
@@ -278,10 +281,8 @@
 
   <!-- Musik -->
   <audio id="bgMusic" src="https://files.catbox.moe/jckpw9.mp3" loop></audio>
-  <!-- ganti src di atas pake link catbox mp3 kamu -->
 
   <script>
-    // ------------ Password ------------
     function checkPassword() {
       let pass = document.getElementById("password").value;
       if(pass === "fitriya yahya"){
@@ -291,19 +292,16 @@
       }
     }
 
-    // ------------ Navigasi Halaman ------------
     function goToPage(n) {
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
       document.getElementById("page"+n).classList.add('active');
 
-      // play musik ketika masuk page 3
       if(n === 3){
         let music = document.getElementById("bgMusic");
-        music.play().catch(err=>console.log("Autoplay dicegah browser:", err));
+        music.play().catch(err=>console.log("Autoplay dicegah:", err));
       }
     }
 
-    // ------------ Tap Tap ------------
     const messages = [
       "hii",
       "maafin kalo ga sesuai sama expect kamu yaaa",
@@ -319,7 +317,6 @@
       document.getElementById("message").innerText = messages[msgIndex];
       msgIndex++;
 
-      // animasi heart kecil terbang
       let heart = document.createElement("div");
       heart.className = "heart";
       heart.innerHTML = "❤";
@@ -328,7 +325,6 @@
       document.body.appendChild(heart);
       setTimeout(() => heart.remove(), 2000);
 
-      // confetti love effect
       for(let i=0; i<5; i++){
         let conf = document.createElement("div");
         conf.className = "confetti";
@@ -339,7 +335,6 @@
         setTimeout(()=> conf.remove(), 1000);
       }
 
-      // jika sudah habis, lanjut ke album
       if(msgIndex >= messages.length){
         setTimeout(() => goToPage(3), 1500);
       }
