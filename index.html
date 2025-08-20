@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>fitriyayahya</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #ffffff, #ffe6f0);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* ------------ Background Heart Beat ------------ */
+    .heartbeat {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+    }
+    .heartbeat svg {
+      position: absolute;
+      stroke: #ff4da6;
+      stroke-width: 3;
+      fill: none;
+      opacity: 0.4;
+      animation: beat 1.5s infinite;
+    }
+    @keyframes beat {
+      0%, 100% { transform: scale(1); opacity: 0.3; }
+      50% { transform: scale(1.2); opacity: 0.6; }
+    }
+
+    /* ------------ Halaman ------------ */
+    .page {
+      display: none;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      padding: 20px;
+      box-sizing: border-box;
+      position: relative;
+      z-index: 1;
+    }
+    .active {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 1s;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    /* ------------ Page 1: Password ------------ */
+    #page1 input {
+      padding: 10px;
+      border: 2px solid pink;
+      border-radius: 10px;
+      margin-top: 10px;
+      outline: none;
+      font-size: 16px;
+      text-align: center;
+    }
+    #page1 button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 20px;
+      background: #ff4e80;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 0 10px rgba(255, 77, 166, 0.4);
+    }
+    #page1 button:hover {
+      background: #ff2e63;
+      transform: scale(1.05);
+    }
+    #page1 button:active {
+      animation: btnClick 0.4s;
+    }
+    @keyframes btnClick {
+      0% { transform: scale(1); }
+      30% { transform: scale(0.9) rotate(-3deg); }
+      60% { transform: scale(1.1) rotate(3deg); }
+      100% { transform: scale(1); }
+    }
+
+    /* ------------ Page 2: Tap-Tap ------------ */
+    #message {
+      font-size: 22px;
+      margin-bottom: 20px;
+      font-weight: bold;
+      color: #d63384;
+      min-height: 50px;
+      text-align: center;
+      max-width: 90%;
+      background: white;
+      padding: 10px 15px;
+      border-radius: 12px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+    #tapBtn {
+      padding: 18px 35px;
+      font-size: 18px;
+      background: #ff85a2;
+      border: none;
+      border-radius: 30px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 10px;
+      animation: pulse 1.5s infinite;
+      position: relative;
+      overflow: hidden;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1);}
+      50% { transform: scale(1.1);}
+      100% { transform: scale(1);}
+    }
+    #tapBtn:active {
+      animation: btnTap 0.4s;
+    }
+    @keyframes btnTap {
+      0% { transform: scale(1); }
+      40% { transform: scale(0.85); }
+      80% { transform: scale(1.15); }
+      100% { transform: scale(1); }
+    }
+
+    .heart {
+      position: absolute;
+      color: #ff4e80;
+      font-size: 20px;
+      animation: floatUp 2s ease forwards;
+    }
+    @keyframes floatUp {
+      0% { transform: translateY(0); opacity: 1;}
+      100% { transform: translateY(-120px); opacity: 0;}
+    }
+
+    /* confetti hati */
+    .confetti {
+      position: absolute;
+      font-size: 18px;
+      color: #ff4da6;
+      animation: confettiFall 1s forwards;
+      pointer-events: none;
+    }
+    @keyframes confettiFall {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-80px) scale(0.5); opacity: 0; }
+    }
+
+    /* ------------ Page 3: Album Foto ------------ */
+    h2 {
+      font-size: 20px;
+      color: #ff4e80;
+      margin-bottom: 20px;
+      background: white;
+      padding: 8px 15px;
+      border-radius: 12px;
+    }
+
+    .album-wrapper {
+      width: 100%;
+      max-width: 100%;
+      overflow: hidden;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      background: white;
+      padding: 15px;
+      border-radius: 15px;
+      position: relative;
+    }
+
+    .album-track {
+      display: flex;
+      animation: scrollLeft 65s linear infinite; /* lebih cepat */
+    }
+
+    @keyframes scrollLeft {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    .album-track img {
+      width: 180px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 15px;
+      margin: 0 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      flex-shrink: 0;
+      animation: zoom 6s ease-in-out infinite alternate;
+    }
+
+    @keyframes zoom {
+      from { transform: scale(1); }
+      to { transform: scale(1.05); }
+    }
+
+    /* ------------ Responsif ------------ */
+    @media (min-width: 768px) {
+      #tapBtn { font-size: 20px; padding: 20px 40px; }
+      .album-track img { width: 220px; height: 320px; margin: 0 15px; }
+      h2 { font-size: 26px; }
+      #message { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Banyak Love Background -->
+  <div class="heartbeat">
+    <svg viewBox="0 0 512 512" style="top:10%; left:15%; width:100px; height:100px;"><path d="M256 464l-16-16C118 326 48 262 48 176 48 106 106 48 176 48c39 0 76 18 100 46 24-28 61-46 100-46 70 0 128 58 128 128 0 86-70 150-192 272l-16 16z"/></svg>
+    <svg viewBox="0 0 512 512" style="top:30%; left:60%; width:120px; height:120px;"><path d="M256 464l-16-16C118 326 48 262 48 176 48 106 106 48 176 48c39 0 76 18 100 46 24-28 61-46 100-46 70 0 128 58 128 128 0 86-70 150-192 272l-16 16z"/></svg>
+    <svg viewBox="0 0 512 512" style="top:70%; left:40%; width:150px; height:150px;"><path d="M256 464l-16-16C118 326 48 262 48 176 48 106 106 48 176 48c39 0 76 18 100 46 24-28 61-46 100-46 70 0 128 58 128 128 0 86-70 150-192 272l-16 16z"/></svg>
+  </div>
+
+  <!-- Halaman 1: Password -->
+  <div id="page1" class="page active">
+    <h2>ketik nama lengkap kamu</h2>
+    <input type="password" id="password" placeholder="Masukkan nama kamu">
+    <button onclick="checkPassword()">Masuk</button>
+  </div>
+
+  <!-- Halaman 2: Tap Tap -->
+  <div id="page2" class="page">
+    <div id="message">Tap tombol di bawah yaa</div>
+    <button id="tapBtn" onclick="tapLove(event)">Tap</button>
+  </div>
+
+  <!-- Halaman 3: Album Foto -->
+  <div id="page3" class="page">
+    <h2>orang paling cantikkkk</h2>
+    <div class="album-wrapper">
+      <div class="album-track">
+        <!-- ganti link fotonya pake catbox punyamu -->
+        <img src="https://files.catbox.moe/ydatu9.jpg" alt="">
+        <img src="https://files.catbox.moe/jgqe75.jpg" alt="">
+        <img src="https://files.catbox.moe/xt5lc3.jpg" alt="">
+        <img src="https://files.catbox.moe/9ieywq.jpg" alt="">
+        <img src="https://files.catbox.moe/6jq6qb.jpg" alt="">
+        <img src="https://files.catbox.moe/bi352x.jpg" alt="">
+        <img src="https://files.catbox.moe/vbnn2t.jpg" alt="">
+        <img src="https://files.catbox.moe/bdat95.jpg" alt="">
+        <img src="https://files.catbox.moe/gxh50s.jpg" alt="">
+        <img src="https://files.catbox.moe/9sfu5n.jpg" alt="">
+        <!-- duplikat -->
+        <img src="https://files.catbox.moe/ydatu9.jpg" alt="">
+        <img src="https://files.catbox.moe/jgqe75.jpg" alt="">
+        <img src="https://files.catbox.moe/xt5lc3.jpg" alt="">
+        <img src="https://files.catbox.moe/9ieywq.jpg" alt="">
+        <img src="https://files.catbox.moe/6jq6qb.jpg" alt="">
+        <img src="https://files.catbox.moe/bi352x.jpg" alt="">
+        <img src="https://files.catbox.moe/vbnn2t.jpg" alt="">
+        <img src="https://files.catbox.moe/bdat95.jpg" alt="">
+        <img src="https://files.catbox.moe/gxh50s.jpg" alt="">
+        <img src="https://files.catbox.moe/9sfu5n.jpg" alt="">
+      </div>
+    </div>
+  </div>
+
+  <!-- Musik -->
+  <audio id="bgMusic" src="https://files.catbox.moe/jckpw9.mp3" loop></audio>
+  <!-- ganti src di atas pake link catbox mp3 kamu -->
+
+  <script>
+    // ------------ Password ------------
+    function checkPassword() {
+      let pass = document.getElementById("password").value;
+      if(pass === "fitriya yahya"){
+        goToPage(2);
+      } else {
+        alert("Sandi salah sayang 💔");
+      }
+    }
+
+    // ------------ Navigasi Halaman ------------
+    function goToPage(n) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById("page"+n).classList.add('active');
+
+      // play musik ketika masuk page 3
+      if(n === 3){
+        let music = document.getElementById("bgMusic");
+        music.play().catch(err=>console.log("Autoplay dicegah browser:", err));
+      }
+    }
+
+    // ------------ Tap Tap ------------
+    const messages = [
+      "hii",
+      "maafin kalo ga sesuai sama expect kamu yaaa",
+      "maafin juga aku sering bikin kamu kesell,marahh,capekk",
+      "mungkin aku juga bukan orang yang terbaik dibanding deretan orang yang kamu temui",
+      "tapi kamu harus percaya kalo aku gapernah pura' mencintaimu ahahahaa",
+      "dan juga ajarin aku biar bisa jadi orang yang kamu cari selama ini",
+      "lop u💕"
+    ];
+    let msgIndex = 0;
+
+    function tapLove(event){
+      document.getElementById("message").innerText = messages[msgIndex];
+      msgIndex++;
+
+      // animasi heart kecil terbang
+      let heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = "❤";
+      heart.style.left = Math.random()*window.innerWidth + "px";
+      heart.style.top = "70%";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 2000);
+
+      // confetti love effect
+      for(let i=0; i<5; i++){
+        let conf = document.createElement("div");
+        conf.className = "confetti";
+        conf.innerHTML = "💖";
+        conf.style.left = (event.clientX + Math.random()*40 - 20) + "px";
+        conf.style.top = (event.clientY + Math.random()*40 - 20) + "px";
+        document.body.appendChild(conf);
+        setTimeout(()=> conf.remove(), 1000);
+      }
+
+      // jika sudah habis, lanjut ke album
+      if(msgIndex >= messages.length){
+        setTimeout(() => goToPage(3), 1500);
+      }
+    }
+  </script>
+</body>
+</html>
